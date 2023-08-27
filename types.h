@@ -6,11 +6,12 @@ typedef struct {
   int file_descriptor;
   uint32_t file_length;
   void* pages[TABLE_MAX_PAGES];
+  uint32_t num_pages;
 } Pager;
 
 typedef struct {
-  uint32_t num_rows;
   Pager* pager;
+  uint32_t root_page_num;
 } Table;
 
 typedef struct {
@@ -55,6 +56,12 @@ typedef enum {
 
 typedef struct {
   Table* table;
-  uint32_t row_num;
+  uint32_t page_num;
+  uint32_t cell_num;
   bool end_of_table;  // Indicates a position one past the last element
 } Cursor;
+
+typedef enum { 
+  NODE_INTERNAL, 
+  NODE_LEAF } 
+NodeType;
