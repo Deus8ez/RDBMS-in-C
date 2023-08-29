@@ -1,3 +1,8 @@
+
+#include "includes.h"
+#ifndef TYPES_H
+#define TYPES_H
+
 #define size_of_attribute(Struct, Attribute) sizeof(((Struct*)0)->Attribute)
 #define TABLE_MAX_PAGES 100
 #define COLUMN_USERNAME_SIZE 32
@@ -65,3 +70,5 @@ typedef enum {
   NODE_INTERNAL, 
   NODE_LEAF } 
 NodeType;
+
+#endif
